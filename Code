@@ -1,0 +1,14 @@
+-- Create Product_Category table
+CREATE TABLE Product_Category (
+    category_id SERIAL PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL
+);
+
+-- Create Product table with a foreign key constraint referencing Product_Category
+CREATE TABLE Product (
+    product_id SERIAL PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Product_Category(category_id)
+);
